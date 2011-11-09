@@ -66,11 +66,16 @@ module HNGraphs
 						 r1.children.nil? or r1.children[2].nil? or
 						 r2.children.nil? or r2.children[1].nil?
 
-				heading  = r1.children[2].children[0]
-				subtext  = r2.children[1].children[0]
-				user     = r2.children[1].children[2].content
-				domain   = r1.children[2].children[1].content.gsub(/.*\((.*)\).*/, '\1')
-				comments = r2.children[1].children[4].content.to_i
+				begin
+					heading  = r1.children[2].children[0]
+					subtext  = r2.children[1].children[0]
+
+					user     = r2.children[1].children[2].content
+					domain   = r1.children[2].children[1].content.gsub(/.*\((.*)\).*/, '\1')
+					comments = r2.children[1].children[4].content.to_i
+				rescue
+					next # promoted items (YC listings) dont have authors. omit for now
+				end
 
 				story = {
 					:id       => subtext['id'].gsub('score_', '').to_i,
