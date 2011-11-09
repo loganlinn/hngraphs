@@ -2,7 +2,7 @@ Remains of an unfinished project for generating data visualizations for Hacker N
 
 Currently only contains a class that will scrape HN and return stories on front page as an array of Ruby objects
 
-```bash
+```
 › ruby lib/hngraphs.rb 
 1. Watch Me Make Mistakes, 356 points (paulgraham.com)
 2. Swearing, 109 points (zachholman.com)
